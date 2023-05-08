@@ -90,5 +90,8 @@
                 }
             }
         }
+
+        public int State { get; set; }
+        public bool Mine { get; set; }
     }
 }
