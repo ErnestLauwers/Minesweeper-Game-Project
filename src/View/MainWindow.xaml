@@ -9,12 +9,13 @@
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
         <converters:SquareStatusConverter x:Key="squareStatusToEllipseFill" Uncovered="Transparent" Covered="Transparent" Flagged="Orange" Mine="Black"/>
+        <converters:SquareStatusConverterVisibility x:Key="squareStatusToVisibility" />
     </Window.Resources>
     <Grid>
-        <ItemsControl ItemsSource="{Binding .}">
+        <ItemsControl ItemsSource="{Binding Board.Rows}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <ItemsControl ItemsSource="{Binding .}">
+                    <ItemsControl ItemsSource="{Binding Squares}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <StackPanel Orientation="Horizontal"/>
@@ -22,12 +23,12 @@
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Button Width="32" Height="32">
+                                <Button Width="32" Height="32" Command="{Binding Uncover}">
                                     <Button.Content>
-                                        <StackPanel>
-                                            <Ellipse Width="20" Height="20" Fill="{Binding Status, Converter={StaticResource squareStatusToEllipseFill}}"/>
-                                            <TextBlock Text="0" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                                        </StackPanel>
+                                        <Grid>
+                                            <Ellipse Width="20" Height="20" Fill="{Binding Status, Converter={StaticResource squareStatusToEllipseFill}}" />
+                                            <TextBlock Text="{Binding NeighboringMineCount, Converter={StaticResource squareStatusToVisibility}}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                        </Grid>
                                     </Button.Content>
                                 </Button>
                             </DataTemplate>

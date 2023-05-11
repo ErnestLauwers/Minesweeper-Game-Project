@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ViewModel;
 
 namespace View
 {
@@ -33,7 +34,7 @@ namespace View
                 ".....",
                 ".*..*",
             });
-
+            /*
             var position = new Vector2D(2, 1);
             var game2 = game.UncoverSquare(position);
 
@@ -43,31 +44,11 @@ namespace View
             var position3 = new Vector2D(2, 3);
             var game4 = game3.UncoverSquare(position3);
 
-            var grid = Rows(game4.Board);
-            DataContext = grid;
-        }
-
-        public IEnumerable<Square> Row(IGameBoard board, int row)
-        {
-            var columns = board.Height;
-            var result = new List<Square>();
-            for (int i = 0; i < columns; i++)
-            {
-                var position = new Vector2D(row, i);
-                result.Add(board[position]);
-            }
-            return result;
-        }
-
-        public IEnumerable<IEnumerable<Square>> Rows(IGameBoard board)
-        {
-            var result = new List<IEnumerable<Square>>();
-            var rows = board.Width;
-            for (int i = 0; i < rows; i++)
-            {
-                result.Add(Row(board, i));
-            }
-            return result;
+            var position4 = new Vector2D(3, 3);
+            var game5 = game4.ToggleFlag(position4);
+            */
+            var gameViewModel = new GameViewModel(game);
+            DataContext = gameViewModel;
         }
 
     }
