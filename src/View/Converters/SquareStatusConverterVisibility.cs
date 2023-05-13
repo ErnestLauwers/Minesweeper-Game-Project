@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows;
+using System.Diagnostics;
 
 namespace View.Converters
 {
@@ -14,12 +15,9 @@ namespace View.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is int count)
-            {
-                return count.ToString();
-            }
-            return string.Empty;
-
+            Debug.WriteLine("test");
+            var status = (SquareStatus)value;
+            return status == SquareStatus.Uncovered ? Visibility.Visible : Visibility.Collapsed;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

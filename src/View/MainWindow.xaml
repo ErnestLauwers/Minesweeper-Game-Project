@@ -27,7 +27,7 @@
                                     <Button.Content>
                                         <Grid>
                                             <Ellipse Width="20" Height="20" Fill="{Binding Status, Converter={StaticResource squareStatusToEllipseFill}}" />
-                                            <TextBlock Text="{Binding NeighboringMineCount, Converter={StaticResource squareStatusToVisibility}}" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                                            <TextBlock Text="{Binding NeighboringMineCount}" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding Status, Converter={StaticResource squareStatusToVisibility}}"/>
                                         </Grid>
                                     </Button.Content>
                                 </Button>

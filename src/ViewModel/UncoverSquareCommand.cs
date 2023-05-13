@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
+
 namespace ViewModel
 {
     public class UncoverSquareCommand : ICommand
@@ -39,7 +40,10 @@ namespace ViewModel
 
         public void Execute(object? parameter)
         {
+            Debug.WriteLine(game.Value.Board[position].Status);
             game.Value = game.Value.UncoverSquare(position);
+            Debug.WriteLine(game.Value.Board[position].Status);
+            
         }
     }
 }

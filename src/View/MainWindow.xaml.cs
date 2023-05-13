@@ -26,7 +26,9 @@ namespace View
         public MainWindow()
         {
             InitializeComponent();
+            var game = IGame.CreateRandom(5, 0.3);
 
+            /*
             var game = IGame.Parse(new List<String> {
                 ".....",
                 "*....",
@@ -34,7 +36,7 @@ namespace View
                 ".....",
                 ".*..*",
             });
-            /*
+            
             var position = new Vector2D(2, 1);
             var game2 = game.UncoverSquare(position);
 

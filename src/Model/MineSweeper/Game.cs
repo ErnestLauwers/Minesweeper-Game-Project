@@ -1,6 +1,7 @@
 ﻿using Model.Data;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 namespace Model.MineSweeper
 {
@@ -104,6 +105,7 @@ namespace Model.MineSweeper
         /// Maximum board size.
         /// </summary>
         public const int MaximumBoardSize = GameBoard.MaximumSize;
+
     }
 
     /// <summary>
@@ -253,4 +255,5 @@ namespace Model.MineSweeper
 
         public override GameStatus Status => GameStatus.Lost;
     }
+
 }
