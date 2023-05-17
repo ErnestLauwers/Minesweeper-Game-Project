@@ -36,9 +36,9 @@ namespace ViewModel
             Debug.WriteLine(game.Value.Board[position].Status);
             game.Value = game.Value.UncoverSquare(position);
             Debug.WriteLine(game.Value.Board[position].Status);
-            if (game.Value.Board[position].Status == SquareStatus.Mine) { 
+            /*if (game.Value.Board[position].Status == SquareStatus.Mine) { 
                 
-            }
+            }*/
         }
     }
 }

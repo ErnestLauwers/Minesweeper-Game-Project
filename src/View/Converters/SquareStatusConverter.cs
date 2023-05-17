@@ -13,14 +13,14 @@ namespace View.Converters
 {
     public class SquareStatusConverter : IValueConverter
     {
-        public object Uncovered { get; set; }
-        public object Covered { get; set; }
-        public object Flagged { get; set; }
-        public object Mine { get; set; }
+        public object? Uncovered { get; set; }
+        public object? Covered { get; set; }
+        public object? Flagged { get; set; }
+        public object? Mine { get; set; }
 
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public object? Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            SquareStatus squareStatus = (SquareStatus)value;
+            var squareStatus = (SquareStatus)value;
 
             switch (squareStatus) 
             {

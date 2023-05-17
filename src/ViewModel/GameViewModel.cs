@@ -17,7 +17,7 @@ namespace ViewModel
         private readonly GameBoardViewModel board;
         public GameViewModel(IGame game)
         {
-            this.game = (ICell<IGame>)Cell.Create<IGame>(game);
+            this.game = Cell.Create(game);
             this.board = new GameBoardViewModel(this.game);
         }
 

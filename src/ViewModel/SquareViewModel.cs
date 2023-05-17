@@ -12,21 +12,22 @@ namespace ViewModel
 {
     public class SquareViewModel
     {
-        private readonly ICell<Square> square;
+        public ICell<Square> Square;
+
+        public ICell<SquareStatus> Status { get; }
 
         public SquareViewModel(ICell<IGame> game, Vector2D position)
         {
-            this.square = game.Derive(g => g.Board).Derive(b => b[position]);
+            this.Square = game.Derive(g => g.Board[position]);
             Uncover = new UncoverSquareCommand(game, position);
             ToggleFlag = new ToggleFlagSquareCommand(game, position);
+            Status = game.Derive(g => g.Board[position].Status);
         }
-            
-        public SquareStatus Status => square.Derive(s => s.Status).Value;
 
         public ICommand Uncover { get; }
 
         public ICommand ToggleFlag { get; }
 
-        public int NeighboringMineCount => square.Derive(s => s.NeighboringMineCount).Value;
+        public int NeighboringMineCount => Square.Derive(s => s.NeighboringMineCount).Value;
     }
 }

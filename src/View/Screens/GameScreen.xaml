@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         d:DesignHeight="500" d:DesignWidth="750">
     <UserControl.Resources>
-        <converters:SquareStatusConverter x:Key="squareStatusToEllipseFill" Uncovered="Yellow" Covered="Red" Flagged="Orange" Mine="Black"/>
+        <converters:SquareStatusConverter x:Key="squareStatusConverter" Uncovered="Yellow" Covered="Red" Flagged="/View/Img/red-flag.png" Mine="/View/Img/nuclear-bomb.png"/>
         <converters:SquareStatusConverterVisibility x:Key="squareStatusToVisibility" />
     </UserControl.Resources>
     <Viewbox>
@@ -35,8 +35,16 @@
                                         </Button.InputBindings>
                                         <Button.Content>
                                             <Grid>
-                                                <Ellipse Width="20" Height="20" Fill="{Binding Status, Converter={StaticResource squareStatusToEllipseFill}}" />
-                                                <TextBlock Text="{Binding NeighboringMineCount}" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding Status, Converter={StaticResource squareStatusToVisibility}}"/>
+                                                <Image Width="24" Height="24">
+                                                    <Image.Source>
+                                                        <Binding Path="Status.Value">
+                                                            <Binding.Converter>
+                                                                <converters:SquareStatusConverter Flagged="/View;component/Img/red-flag.png" Mine="/View;component/Img/nuclear-bomb.png"  />
+                                                            </Binding.Converter>
+                                                        </Binding>
+                                                    </Image.Source>
+                                                </Image>
+                                                <TextBlock Text="{Binding NeighboringMineCount}" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding Status.Value, Converter={StaticResource squareStatusToVisibility}}"/>
                                             </Grid>
                                         </Button.Content>
                                     </Button>
