@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         d:DesignHeight="500" d:DesignWidth="750">
     <UserControl.Resources>
-        <converters:SquareStatusConverter x:Key="squareStatusConverter" Uncovered="Yellow" Covered="Red" Flagged="/View/Img/red-flag.png" Mine="/View/Img/nuclear-bomb.png"/>
+        <converters:SquareStatusConverter x:Key="squareStatusConverter" Uncovered="Transparent" Covered="Transparent" Flagged="/View/Img/red-flag.png" Mine="/View/Img/nuclear-bomb.png"/>
         <converters:SquareStatusConverterVisibility x:Key="squareStatusToVisibility" />
     </UserControl.Resources>
     <Viewbox>
@@ -16,8 +16,33 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="5*"></RowDefinition>
                 <RowDefinition Height="4*"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
             </Grid.RowDefinitions>
             <Button Grid.Row="0" Background="Aquamarine" Content="Settings" Command="{Binding Settings}"/>
+            <Label Grid.Row="2" HorizontalAlignment="Center" RenderTransformOrigin="0.5, 0.5">
+                <Label.RenderTransform>
+                    <RotateTransform/>
+                </Label.RenderTransform>
+                <Label.Style>
+                    <Style TargetType="{x:Type Label}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding GameViewModel.Status.Value, UpdateSourceTrigger=PropertyChanged}" Value="Won">
+                                <Setter Property="Content" Value="You won :)" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding GameViewModel.Status.Value, UpdateSourceTrigger=PropertyChanged}" Value="Lost">
+                                <Setter Property="Content" Value="You lost :(" />
+                            </DataTrigger>
+                            <EventTrigger RoutedEvent="Label.Loaded">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="(Label.RenderTransform).(RotateTransform.Angle)" From="0" To="360" Duration="0:0:3" RepeatBehavior="Forever" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Label.Style>
+            </Label>
             <ItemsControl Grid.Row="1" ItemsSource="{Binding Path=GameViewModel.Board.Rows}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
@@ -39,7 +64,7 @@
                                                     <Image.Source>
                                                         <Binding Path="Status.Value">
                                                             <Binding.Converter>
-                                                                <converters:SquareStatusConverter Flagged="/View;component/Img/red-flag.png" Mine="/View;component/Img/nuclear-bomb.png"  />
+                                                                <converters:SquareStatusConverter Flagged="/View;component/Img/red-flag.png" Mine="/View;component/Img/nuclear-bomb.png" />
                                                             </Binding.Converter>
                                                         </Binding>
                                                     </Image.Source>

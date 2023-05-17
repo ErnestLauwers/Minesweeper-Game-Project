@@ -1,6 +1,7 @@
 ﻿using Model.MineSweeper;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -21,7 +22,7 @@ namespace View.Converters
         public object? Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var squareStatus = (SquareStatus)value;
-
+            Debug.WriteLine("kankerStijl");
             switch (squareStatus) 
             {
                 case SquareStatus.Uncovered:

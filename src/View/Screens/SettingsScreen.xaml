@@ -6,7 +6,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="750">
 
-    <Grid Background="LightBlue" Width="750" Height="500">
+    <Grid Background="Aquamarine" Width="750" Height="500">
         <Grid.RowDefinitions>
             <RowDefinition Height="15"></RowDefinition>
             <RowDefinition Height="100"></RowDefinition>
