@@ -18,11 +18,14 @@ namespace ViewModel
         {
             this.square = game.Derive(g => g.Board).Derive(b => b[position]);
             Uncover = new UncoverSquareCommand(game, position);
+            ToggleFlag = new ToggleFlagSquareCommand(game, position);
         }
             
         public SquareStatus Status => square.Derive(s => s.Status).Value;
 
         public ICommand Uncover { get; }
+
+        public ICommand ToggleFlag { get; }
 
         public int NeighboringMineCount => square.Derive(s => s.NeighboringMineCount).Value;
     }

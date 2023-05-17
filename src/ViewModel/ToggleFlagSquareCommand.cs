@@ -9,16 +9,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-
 namespace ViewModel
 {
-    public class UncoverSquareCommand : ICommand
+    public class ToggleFlagSquareCommand : ICommand
     {
 
         private readonly ICell<IGame> game;
         private readonly Vector2D position;
 
-        public UncoverSquareCommand(ICell<IGame> game, Vector2D position)
+        public ToggleFlagSquareCommand(ICell<IGame> game, Vector2D position)
         {
             this.game = game;
             this.position = position;
@@ -34,11 +33,8 @@ namespace ViewModel
         public void Execute(object? parameter)
         {
             Debug.WriteLine(game.Value.Board[position].Status);
-            game.Value = game.Value.UncoverSquare(position);
+            this.game.Value = this.game.Value.ToggleFlag(this.position);
             Debug.WriteLine(game.Value.Board[position].Status);
-            if (game.Value.Board[position].Status == SquareStatus.Mine) { 
-                
-            }
         }
     }
 }

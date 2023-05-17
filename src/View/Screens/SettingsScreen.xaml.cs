@@ -12,19 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ViewModel;
 
-namespace View
+namespace View.Screens
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SettingsScreen.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SettingsScreen : UserControl
     {
-        public MainWindow()
+        public SettingsScreen()
         {
             InitializeComponent();
-            this.DataContext = new MainViewModel();
         }
     }
 }
