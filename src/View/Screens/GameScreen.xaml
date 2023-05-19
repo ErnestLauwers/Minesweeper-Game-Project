@@ -9,6 +9,7 @@
         d:DesignHeight="500" d:DesignWidth="750">
     <UserControl.Resources>
         <converters:SquareStatusConverter x:Key="squareStatusConverter" Uncovered="Transparent" Covered="Transparent" Flagged="/View/Img/red-flag.png" Mine="/View/Img/nuclear-bomb.png"/>
+        <converters:SquareStatusConverterButton x:Key="squareStatusButton" />
         <converters:SquareStatusConverterVisibility x:Key="squareStatusToVisibility" />
     </UserControl.Resources>
     <Viewbox>
@@ -18,7 +19,21 @@
                 <RowDefinition Height="4*"></RowDefinition>
                 <RowDefinition Height="3*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Button Grid.Row="0" Background="Aquamarine" Content="Settings" Command="{Binding Settings}"/>
+            <Button Grid.Row="0" Background="Aquamarine" Content="Play Again" Command="{Binding Settings}">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding GameViewModel.Status.Value}" Value="Won">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding GameViewModel.Status.Value}" Value="Lost">
+                                <Setter Property="Visibility" Value="Visible" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
             <Label Grid.Row="2" HorizontalAlignment="Center" RenderTransformOrigin="0.5, 0.5">
                 <Label.RenderTransform>
                     <RotateTransform/>
@@ -54,7 +69,7 @@
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <Button Width="32" Height="32" Command="{Binding Uncover}">
+                                    <Button Width="32" Height="32" Command="{Binding Uncover}" IsEnabled="{Binding Status.Value, Converter={StaticResource squareStatusButton}}">
                                         <Button.InputBindings>
                                             <MouseBinding Gesture="RightClick" Command="{Binding ToggleFlag}"/>
                                         </Button.InputBindings>
@@ -64,7 +79,7 @@
                                                     <Image.Source>
                                                         <Binding Path="Status.Value">
                                                             <Binding.Converter>
-                                                                <converters:SquareStatusConverter Flagged="/View;component/Img/red-flag.png" Mine="/View;component/Img/nuclear-bomb.png" />
+                                                                <converters:SquareStatusConverter Flagged="/Img/red-flag.png" Mine="/Img/nuclear-bomb.png" />
                                                             </Binding.Converter>
                                                         </Binding>
                                                     </Image.Source>

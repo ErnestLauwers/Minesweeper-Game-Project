@@ -16,7 +16,6 @@ namespace View.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var status = (SquareStatus)value;
-            Debug.WriteLine("kanker");
             return status == SquareStatus.Uncovered ? Visibility.Visible : Visibility.Collapsed;
         }
 

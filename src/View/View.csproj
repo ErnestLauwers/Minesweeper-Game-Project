@@ -8,11 +8,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Img\nuclear-bomb.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ViewModel\ViewModel.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Img\" />
+    <Resource Include="Img\nuclear-bomb.png" />
   </ItemGroup>
 
 </Project>

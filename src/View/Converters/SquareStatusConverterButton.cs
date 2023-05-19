@@ -12,7 +12,7 @@ using System.Windows.Media;
 
 namespace View.Converters
 {
-    public class SquareStatusConverter : IValueConverter
+    public class SquareStatusConverterButton : IValueConverter
     {
         public object? Uncovered { get; set; }
         public object? Covered { get; set; }
@@ -22,20 +22,19 @@ namespace View.Converters
         public object? Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var squareStatus = (SquareStatus)value;
-            Debug.WriteLine("statuschecked " + squareStatus);
-            switch (squareStatus) 
+            switch (squareStatus)
             {
                 case SquareStatus.Uncovered:
-                    return Uncovered;
+                    return false;
 
                 case SquareStatus.Covered:
-                    return Covered;
+                    return true;
 
                 case SquareStatus.Mine:
-                    return Mine;
+                    return false;
 
                 case SquareStatus.Flagged:
-                    return Flagged;
+                    return true;
 
                 default:
                     throw new ArgumentException("Invalid Square Status Given");

@@ -28,6 +28,6 @@ namespace ViewModel
 
         public ICommand ToggleFlag { get; }
 
-        public int NeighboringMineCount => Square.Derive(s => s.NeighboringMineCount).Value;
+        public int? NeighboringMineCount => Square.Derive(s => s.NeighboringMineCount).Value == 0 ? null : Square.Derive(s => s.NeighboringMineCount).Value;
     }
 }
