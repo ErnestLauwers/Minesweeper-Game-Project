@@ -14,7 +14,6 @@ namespace ViewModel
 {
     public class UncoverSquareCommand : ICommand
     {
-
         private readonly ICell<IGame> game;
         private readonly Vector2D position;
 
@@ -33,12 +32,7 @@ namespace ViewModel
 
         public void Execute(object? parameter)
         {
-            Debug.WriteLine(game.Value.Board[position].Status);
             game.Value = game.Value.UncoverSquare(position);
-            Debug.WriteLine(game.Value.Board[position].Status);
-            /*if (game.Value.Board[position].Status == SquareStatus.Mine) { 
-                
-            }*/
         }
     }
 }

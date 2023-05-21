@@ -8,7 +8,9 @@
         mc:Ignorable="d"
         d:DesignHeight="500" d:DesignWidth="750">
     <UserControl.Resources>
-        <converters:SquareStatusConverter x:Key="squareStatusConverter" Uncovered="Transparent" Covered="Transparent" Flagged="/View/Img/red-flag.png" Mine="/View/Img/nuclear-bomb.png"/>
+        <ImageBrush x:Key="Flag" x:Name="Flag" ImageSource="/Image/red-flag.png"/>
+        <ImageBrush x:Key="Bomb" ImageSource="/Image/nuclear-bomb.png"/>
+        <converters:SquareStatusConverter x:Key="squareStatusConverter" Uncovered="Transparent" Covered="Transparent" Flagged="{StaticResource Flag}" Mine="{StaticResource Bomb}"/>
         <converters:SquareStatusConverterButton x:Key="squareStatusButton" />
         <converters:SquareStatusConverterVisibility x:Key="squareStatusToVisibility" />
     </UserControl.Resources>
@@ -69,25 +71,17 @@
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                    <Button Width="32" Height="32" Command="{Binding Uncover}" IsEnabled="{Binding Status.Value, Converter={StaticResource squareStatusButton}}">
-                                        <Button.InputBindings>
-                                            <MouseBinding Gesture="RightClick" Command="{Binding ToggleFlag}"/>
-                                        </Button.InputBindings>
-                                        <Button.Content>
-                                            <Grid>
-                                                <Image Width="24" Height="24">
-                                                    <Image.Source>
-                                                        <Binding Path="Status.Value">
-                                                            <Binding.Converter>
-                                                                <converters:SquareStatusConverter Flagged="/Img/red-flag.png" Mine="/Img/nuclear-bomb.png" />
-                                                            </Binding.Converter>
-                                                        </Binding>
-                                                    </Image.Source>
-                                                </Image>
-                                                <TextBlock Text="{Binding NeighboringMineCount}" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding Status.Value, Converter={StaticResource squareStatusToVisibility}}"/>
-                                            </Grid>
-                                        </Button.Content>
-                                    </Button>
+                                <Button Width="32" Height="32" Command="{Binding Uncover}" IsEnabled="{Binding Status.Value, Converter={StaticResource squareStatusButton}}">
+                                    <Button.InputBindings>
+                                        <MouseBinding Gesture="RightClick" Command="{Binding FlagSquare}"/>
+                                    </Button.InputBindings>
+                                    <Button.Content>
+                                        <Grid>
+                                            <Ellipse Width="20" Height="20" Fill="{Binding Status.Value, Converter={StaticResource squareStatusConverter}}" />
+                                            <TextBlock Text="{Binding NeighboringMineCount}" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding Status.Value, Converter={StaticResource squareStatusToVisibility}}"/>
+                                        </Grid>
+                                    </Button.Content>
+                                </Button>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>

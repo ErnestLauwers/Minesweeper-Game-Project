@@ -8,7 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Img\nuclear-bomb.png" />
+    <None Remove="Image\nuclear-bomb.png" />
+    <None Remove="Image\red-flag.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -16,7 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Img\nuclear-bomb.png" />
+    <Resource Include="Image\nuclear-bomb.png" />
+    <Resource Include="Image\red-flag.png" />
   </ItemGroup>
 
 </Project>

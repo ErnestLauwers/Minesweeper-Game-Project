@@ -17,7 +17,7 @@ namespace ViewModel
             Play = new ActionCommand(() => currentScreen.Value = new GameScreenViewModel(this.CurrentScreen, BoardSize, Flooding, MineProbability));
             PlayEasy = new ActionCommand(() => currentScreen.Value = new GameScreenViewModel(this.CurrentScreen, 5, Flooding, MineProbability));
             PlayMedium = new ActionCommand(() => currentScreen.Value = new GameScreenViewModel(this.CurrentScreen, 10, Flooding, MineProbability));
-            PlayHard = new ActionCommand(() => currentScreen.Value = new GameScreenViewModel(this.CurrentScreen, 20, Flooding, MineProbability));
+            PlayHard = new ActionCommand(() => currentScreen.Value = new GameScreenViewModel(this.CurrentScreen, 15, Flooding, MineProbability));
         }
 
         public int BoardSize { get; set; } = 6;

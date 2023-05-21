@@ -22,7 +22,6 @@ namespace View.Converters
         public object? Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var squareStatus = (SquareStatus)value;
-            Debug.WriteLine("statuschecked " + squareStatus);
             switch (squareStatus) 
             {
                 case SquareStatus.Uncovered:

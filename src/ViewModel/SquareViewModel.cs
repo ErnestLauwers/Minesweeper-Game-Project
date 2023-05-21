@@ -20,13 +20,13 @@ namespace ViewModel
         {
             this.Square = game.Derive(g => g.Board[position]);
             Uncover = new UncoverSquareCommand(game, position);
-            ToggleFlag = new ToggleFlagSquareCommand(game, position);
+            FlagSquare = new ToggleFlagSquareCommand(game, position);
             Status = game.Derive(g => g.Board[position].Status);
         }
 
         public ICommand Uncover { get; }
 
-        public ICommand ToggleFlag { get; }
+        public ICommand FlagSquare { get; }
 
         public int? NeighboringMineCount => Square.Derive(s => s.NeighboringMineCount).Value == 0 ? null : Square.Derive(s => s.NeighboringMineCount).Value;
     }
