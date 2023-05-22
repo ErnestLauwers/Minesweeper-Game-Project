@@ -13,12 +13,13 @@
         <converters:SquareStatusConverter x:Key="squareStatusConverter" Uncovered="Transparent" Covered="Transparent" Flagged="{StaticResource Flag}" Mine="{StaticResource Bomb}"/>
         <converters:SquareStatusConverterButton x:Key="squareStatusButton" />
         <converters:SquareStatusConverterVisibility x:Key="squareStatusToVisibility" />
+        <converters:SquareMineCountToColor x:Key="squareMineCountToColor" />
     </UserControl.Resources>
     <Viewbox>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="5*"></RowDefinition>
-                <RowDefinition Height="4*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
                 <RowDefinition Height="3*"></RowDefinition>
             </Grid.RowDefinitions>
             <Button Grid.Row="0" Background="Aquamarine" Content="Play Again" Command="{Binding Settings}">
@@ -78,7 +79,7 @@
                                     <Button.Content>
                                         <Grid>
                                             <Ellipse Width="20" Height="20" Fill="{Binding Status.Value, Converter={StaticResource squareStatusConverter}}" />
-                                            <TextBlock Text="{Binding NeighboringMineCount}" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding Status.Value, Converter={StaticResource squareStatusToVisibility}}"/>
+                                            <TextBlock Text="{Binding NeighboringMineCount}" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding Status.Value, Converter={StaticResource squareStatusToVisibility}}" Foreground="{Binding NeighboringMineCount, Converter={StaticResource squareMineCountToColor}}"/>
                                         </Grid>
                                     </Button.Content>
                                 </Button>

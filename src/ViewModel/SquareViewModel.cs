@@ -20,7 +20,7 @@ namespace ViewModel
         {
             this.Square = game.Derive(g => g.Board[position]);
             Uncover = new UncoverSquareCommand(game, position);
-            FlagSquare = new ToggleFlagSquareCommand(game, position);
+            FlagSquare = new FlagSquareCommand(game, position);
             Status = game.Derive(g => g.Board[position].Status);
         }
 

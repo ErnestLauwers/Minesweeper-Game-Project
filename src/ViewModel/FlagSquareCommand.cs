@@ -11,13 +11,13 @@ using System.Windows.Input;
 
 namespace ViewModel
 {
-    public class ToggleFlagSquareCommand : ICommand
+    public class FlagSquareCommand : ICommand
     {
 
         private readonly ICell<IGame> game;
         private readonly Vector2D position;
 
-        public ToggleFlagSquareCommand(ICell<IGame> game, Vector2D position)
+        public FlagSquareCommand(ICell<IGame> game, Vector2D position)
         {
             this.game = game;
             this.position = position;
@@ -32,9 +32,7 @@ namespace ViewModel
 
         public void Execute(object? parameter)
         {
-            Debug.WriteLine(game.Value.Board[position].Status);
             this.game.Value = this.game.Value.ToggleFlag(this.position);
-            Debug.WriteLine(game.Value.Board[position].Status);
         }
     }
 }

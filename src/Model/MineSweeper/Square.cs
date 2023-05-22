@@ -22,18 +22,14 @@
         /// </summary>
         Uncovered
     }
-
     /// <summary>
     /// Represents a square. A square can be either empty or contain a mine.
     /// </summary>
     public class Square
     {
         internal bool ContainsMine { get; }
-
         internal bool IsCovered { get; private set; }
-
         internal bool IsFlagged { get; private set; }
-
         internal Square(bool containsMine, int neighboringMineCount)
         {
             this.ContainsMine = containsMine;
@@ -41,7 +37,6 @@
             this.IsFlagged = false;
             this.NeighboringMineCount = neighboringMineCount;
         }
-
         internal Square(Square square)
         {
             this.ContainsMine = square.ContainsMine;
@@ -49,38 +44,33 @@
             this.IsFlagged = square.IsFlagged;
             this.NeighboringMineCount = square.NeighboringMineCount;
         }
-
         internal void Uncover()
         {
             IsCovered = false;
             IsFlagged = false;
         }
-
         internal void ToggleFlag()
         {
             IsFlagged = !IsFlagged;
         }
-
         public override string ToString()
         {
             return IsFlagged ? "F" : IsCovered ? "?" : ContainsMine ? "M" : NeighboringMineCount.ToString();
         }
-
         public int NeighboringMineCount { get; }
-
         public SquareStatus Status
         {
             get
             {
-                if ( IsFlagged )
+                if (IsFlagged)
                 {
                     return SquareStatus.Flagged;
                 }
-                else if ( IsCovered )
+                else if (IsCovered)
                 {
                     return SquareStatus.Covered;
                 }
-                else if ( ContainsMine )
+                else if (ContainsMine)
                 {
                     return SquareStatus.Mine;
                 }
@@ -90,8 +80,5 @@
                 }
             }
         }
-
-        public int State { get; set; }
-        public bool Mine { get; set; }
     }
 }
