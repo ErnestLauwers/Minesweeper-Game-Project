@@ -20,7 +20,7 @@ namespace ViewModel
             PlayHard = new ActionCommand(() => currentScreen.Value = new GameScreenViewModel(this.CurrentScreen, 15, Flooding, MineProbability));
         }
 
-        public int BoardSize { get; set; } = 6;
+        public int BoardSize { get; set; } = 5;
         public bool Flooding { get; set; } = true;
         public double MineProbability { get; set; } = 0.2;
         public int MaximumSize { get; } = IGame.MaximumBoardSize;

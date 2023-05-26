@@ -35,7 +35,7 @@
         <Slider Grid.Row="3" Grid.Column="1" x:Name="boardSizeSlider" Value="{Binding BoardSize}" Minimum="{Binding MinimumSize}" Maximum="{Binding MaximumSize}" Width="90" Orientation="Horizontal" TickFrequency="1" IsSnapToTickEnabled="True" />
         <TextBox Grid.Row="4" Grid.Column="1" TextAlignment="Center" Background="Transparent" x:Name="myBoardSize" Text="{Binding ElementName=boardSizeSlider, Path=Value}"/>
         <TextBlock Grid.Row="2" Grid.Column="3" TextAlignment="Center" Text="Mine Probability" FontSize="18" Background="Transparent"/>
-        <Slider Grid.Row="3" Grid.Column="3" x:Name="mineProbabilitySlider" Value="{Binding MineProbability}" Minimum="0.1" Maximum="0.9" Width="90" Orientation="Horizontal" TickFrequency="0.1" IsSnapToTickEnabled="True"/>
+        <Slider Grid.Row="3" Grid.Column="3" x:Name="mineProbabilitySlider" Value="{Binding MineProbability}" Minimum="0.1" Maximum="0.8" Width="90" Orientation="Horizontal" TickFrequency="0.1" IsSnapToTickEnabled="True"/>
         <TextBox Grid.Row="4" Grid.Column="3" TextAlignment="Center" Background="Transparent" x:Name="myMineProbability" Text="{Binding ElementName=mineProbabilitySlider, Path=Value, StringFormat=N2}"/>
         <TextBlock Grid.Row="5" Grid.Column="2" TextAlignment="Center" Text="Flooding" FontSize="15" Background="Transparent"/>
         <CheckBox Grid.Row="6" Grid.Column="2" HorizontalAlignment="Center" Background="White" x:Name="EnableFlooding" IsChecked="{Binding Flooding}"/>

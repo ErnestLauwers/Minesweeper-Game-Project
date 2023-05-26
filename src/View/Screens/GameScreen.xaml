@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         d:DesignHeight="500" d:DesignWidth="750">
     <UserControl.Resources>
-        <ImageBrush x:Key="Flag" x:Name="Flag" ImageSource="/Image/red-flag.png"/>
+        <ImageBrush x:Key="Flag" ImageSource="/Image/red-flag.png"/>
         <ImageBrush x:Key="Bomb" ImageSource="/Image/nuclear-bomb.png"/>
         <converters:SquareStatusConverter x:Key="squareStatusConverter" Uncovered="Transparent" Covered="Transparent" Flagged="{StaticResource Flag}" Mine="{StaticResource Bomb}"/>
         <converters:SquareStatusConverterButton x:Key="squareStatusButton" />

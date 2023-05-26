@@ -1,12 +1,12 @@
 {
-    "first-name": "TODO",
-    "last-name": "TODO",
-    "github-url": "https://github.com/ucll-vgo2122/minesweeper-TODO",
+    "first-name": "Ernest",
+    "last-name": "Lauwers",
+    "github-url": "https://github.com/ucll-vgo2122/minesweeper-ErnestLauwers",
     "framework": "WPF",
     "extensions": [
-        "TODO1",
-        "TODO2",
-        "TODO3",
-        "..."
+        "Different font color depending of amount of neighbouring mines",
+        "Animation",
+        "Custom mine probability",
+        "Quickstart"
     ]
 }
