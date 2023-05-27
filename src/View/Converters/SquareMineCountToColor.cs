@@ -12,27 +12,35 @@ namespace View.Converters
 {
     class SquareMineCountToColor : IValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public object? One { get; set; }
+        public object? Two { get; set; }
+        public object? Three { get; set; }
+        public object? Four { get; set; }
+        public object? Five { get; set; }
+        public object? Six { get; set; }
+        public object? Rest { get; set; }
+
+        public object? Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value is int neighboringMineCount && neighboringMineCount > 0)
             {
                 switch (neighboringMineCount)
                 {
                     case 1:
-                        return Brushes.Blue;
+                        return One;
                     case 2:
-                        return Brushes.Green;
+                        return Two;
                     case 3:
-                        return Brushes.Red;
+                        return Three;
                     case 4:
-                        return Brushes.Orange;
+                        return Four;
                     case 5:
-                        return Brushes.Purple;
+                        return Five;
                     case 6:
-                        return Brushes.DeepPink;
+                        return Six;
                 }
             }
-            return Brushes.Transparent;
+            return Rest;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

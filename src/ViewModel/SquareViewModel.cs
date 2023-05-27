@@ -13,7 +13,7 @@ namespace ViewModel
 {
     public class SquareViewModel
     {
-        public ICell<Square> Square;
+        private ICell<Square> Square;
 
         public ICell<SquareStatus> Status { get; }
 
